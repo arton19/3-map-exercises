@@ -2,6 +2,8 @@ package part02;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * This class contains a set of methods that you need to implement.
@@ -30,7 +32,20 @@ public class MapExperts {
          * or the toCharArray() method. charAt() returns a single character and
          * toCharArray() returns an array of characters.
          */
-        return null;
+
+        HashMap<Character, Integer> kartta = new HashMap<>();
+
+        for (int i = 0; i < word.length(); i++){
+            int kirjain = 1;
+            if (kartta.containsKey(word.charAt(i))){
+                int uusiKirjain = kartta.get(word.charAt(i)) + 1;
+                kartta.put(word.charAt(i), uusiKirjain);
+                uusiKirjain++;
+            } else {
+                kartta.put(word.charAt(i), kirjain);
+            }
+        }
+        return kartta;
     }
 
     /**
@@ -52,7 +67,14 @@ public class MapExperts {
          * can choose any of the keys to be the value of the reversed map. So either
          * { 1 -> "apples" } or { 1 -> "oranges" } will be accepted.
          */
-        return null;
+
+        HashMap<Integer, String> kartta = new HashMap<>();
+
+        for (String arvo : map.keySet()){
+            kartta.put(map.get(arvo), arvo);
+        }
+
+        return kartta;
     }
 
     /**
@@ -77,6 +99,13 @@ public class MapExperts {
          * String code = course.code();
          * String name = course.name(); // you won't need this in the exercise
          */
-        return null;
+        
+        HashMap<String, Course> kartta = new HashMap<>();
+
+        for (Course kurssi : list) {
+        kartta.put(kurssi.code(), kurssi);
+        }
+
+        return kartta;
     }
 }
