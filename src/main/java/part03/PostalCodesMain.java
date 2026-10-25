@@ -2,6 +2,11 @@ package part03;
 
 import java.util.Map;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This part of the exercise is tested manually through the user interface, not
@@ -43,6 +48,27 @@ public class PostalCodesMain {
         String answer = scanner.nextLine(); // answer may be a postal code or a postal district name
 
         // TODO: Implement your logic here
+
+
+        if (postalCodes.containsKey(answer)){
+            System.out.println(postalCodes.get(answer));
+        } else {
+            List<String> loydetyt = new ArrayList<>();
+
+            for (String koodi : postalCodes.keySet()) {
+                String nimi = postalCodes.get(koodi);
+
+                if (nimi.equalsIgnoreCase(answer)) {
+                    loydetyt.add(koodi);
+                }
+            }
+
+            Collections.sort(loydetyt);
+
+            for (String koodi : loydetyt) {
+                System.out.println(koodi);
+            }
+        }
 
         scanner.close();
     }
